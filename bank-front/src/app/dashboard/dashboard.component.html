@@ -1,0 +1,267 @@
+<nav class="navbar navbar-expand-lg bg-dark">
+  <div class="container-fluid">
+    <div class="col-lg-10">
+      <a class="navbar-brand text-light">Ashu & Sammy Banks</a>
+    </div>
+    <button
+      class="navbar-toggler"
+      type="button"
+      data-bs-toggle="collapse"
+      data-bs-target="#navbarSupportedContent"
+      aria-controls="navbarSupportedContent"
+      aria-expanded="false"
+      aria-label="Toggle navigation"
+    >
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav mb-2 mb-lg-0">
+        <li class="nav-item dropdown">
+          <a
+            class="nav-link dropdown-toggle text-light"
+            href="#"
+            role="button"
+            data-bs-toggle="dropdown"
+            aria-expanded="false"
+          >
+            Services
+          </a>
+          <ul class="dropdown-menu">
+            <li>
+              <a
+                (click)="getBalance()"
+                class="dropdown-item"
+                data-bs-toggle="offcanvas"
+                href="#offcanvasExample"
+                >Balance Enquiry</a
+              >
+            </li>
+            <li>
+              <a
+                class="dropdown-item btn"
+                data-bs-toggle="modal"
+                data-bs-target="#staticBackdrop"
+                >Fund Transfer</a
+              >
+            </li>
+            <li>
+              <a class="dropdown-item" routerLink="/transactions"
+                >Mini Statement</a
+              >
+            </li>
+            <li><hr class="dropdown-divider" /></li>
+            <li>
+              <a class="dropdown-item" (click)="deleteAcno()">
+                <i class="fa-solid fa-trash me-1"></i> My Account</a
+              >
+            </li>
+            <li>
+              <a class="dropdown-item btn" (click)="logout()">
+                <i class="fa-solid fa-right-from-bracket me-1"></i>Logout</a
+              >
+            </li>
+          </ul>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+<!--  -->
+<app-delete-confirm [deleteAcno]="acno"></app-delete-confirm>
+<!--  -->
+
+<!-- dashboard -->
+<div class="container">
+  <div class="row">
+    <div class="col-md-4">
+      <!-- content -->
+      <h1 style="margin-top: 100px">Welcome {{ user }}</h1>
+      <label for="" style="text-align: justify" class="mt-2">
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Necessitatibus
+        placeat autem odio, nulla, ipsam consequatur omnis dignissimos accusamus
+        est deleniti excepturi sapiente asperiores! Expedita accusantium illo
+        aliquam suscipit quod voluptatibus. Lorem ipsum dolor sit amet
+        consectetur adipisicing elit. Consequatur, quos dignissimos? Rem minus
+        dolor quo nulla fugiat, vitae corrupti accusantium corporis eaque
+        numquam necessitatibus! Dolorem saepe libero id sunt dolor.
+      </label>
+      <div class="collapse" id="collapseExample">
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Incidunt
+        aliquam corrupti quo blanditiis harum, a soluta mollitia dolores
+        cupiditate illum quas quibusdam placeat provident, quasi temporibus
+        voluptatum, nam alias omnis. Lorem ipsum dolor sit amet consectetur
+        adipisicing elit. Nam sed suscipit eligendi odit doloribus nihil, ipsa
+        nisi consequuntur architecto doloremque magnam. Quisquam dolorum
+        doloribus alias sit tempore sed quaerat voluptas. Lorem ipsum dolor sit
+        amet consectetur adipisicing elit. Reiciendis, architecto alias minus
+        vitae soluta, minima eos illo dolor, eum quas possimus excepturi nihil
+        officia at facere est nobis unde quam.
+      </div>
+      <button
+        class="btn btn-primary mt-2"
+        data-bs-toggle="collapse"
+        data-bs-target="#collapseExample"
+        (click)="collapse()"
+      >
+        Read <span *ngIf="isCollapse">More</span
+        ><span *ngIf="!isCollapse">Less</span>
+      </button>
+    </div>
+    <div class="col-md-8">
+      <!-- image -->
+      <img
+        src="https://d31bgfoj87qaaj.cloudfront.net/blog/wp-content/uploads/2017/11/Blog-Activate-net-banking-min.jpg"
+        alt="online banking"
+        class="img-fluid mt-4"
+      />
+    </div>
+  </div>
+</div>
+
+<a (click)="getBalance()">Grrr</a>
+
+<!-- offcanvas balance enquiry -->
+<div
+  class="offcanvas offcanvas-start"
+  tabindex="-1"
+  id="offcanvasExample"
+  aria-labelledby="offcanvasExampleLabel"
+>
+  <div class="offcanvas-header">
+    <h5 class="offcanvas-title" id="offcanvasExampleLabel">Balance Enquiry</h5>
+    <button
+      type="button"
+      class="btn-close"
+      data-bs-dismiss="offcanvas"
+      aria-label="Close"
+    ></button>
+  </div>
+  <div class="offcanvas-body">
+    <img
+      src="https://img.freepik.com/free-vector/money-bag-background-design_1270-41.jpg?w=360"
+      alt="money"
+      style="border-radius: 50%"
+    />
+    <div class="mt-3">
+      <h3>Hello {{ user }}</h3>
+      <p>
+        Your Balance is <span>Rs.{{ balance }}</span>
+      </p>
+    </div>
+  </div>
+</div>
+
+<!-- fund transfer modal -->
+<div
+  class="modal fade"
+  id="staticBackdrop"
+  data-bs-backdrop="static"
+  data-bs-keyboard="false"
+  tabindex="-1"
+  aria-labelledby="staticBackdropLabel"
+  aria-hidden="true"
+>
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5" id="staticBackdropLabel">Fund Transfer</h1>
+        <button
+          (click)="clearFundTransfer()"
+          type="button"
+          class="btn-close"
+          data-bs-dismiss="modal"
+          aria-label="Close"
+        ></button>
+      </div>
+      <div class="modal-body">
+        <form action="" [formGroup]="fundTransferForm">
+          <!-- credit acno -->
+          <div class="form-floating mb-3">
+            <input
+              formControlName="creditAcno"
+              type="number"
+              class="form-control"
+              id="floatingInput"
+              placeholder="Account Number"
+            />
+            <label for="floatingInput">Account Number</label>
+          </div>
+          <div
+            class="text-danger text-center"
+            *ngIf="
+              this.fundTransferForm.get('creditAcno')?.errors &&
+              this.fundTransferForm.get('creditAcno')?.touched
+            "
+          >
+            Invalid Account Number
+          </div>
+
+          <!-- amount -->
+          <div class="form-floating mb-3">
+            <input
+              formControlName="amount"
+              type="number"
+              class="form-control"
+              id="floatingInput"
+              placeholder="Amount"
+            />
+            <label for="floatingInput">Amount</label>
+          </div>
+          <div
+            class="text-danger text-center"
+            *ngIf="
+              this.fundTransferForm.get('amount')?.errors &&
+              this.fundTransferForm.get('amount')?.touched
+            "
+          >
+            Invalid Amount
+          </div>
+          <!-- password -->
+          <div class="form-floating">
+            <input
+              formControlName="password"
+              type="password"
+              class="form-control"
+              id="floatingPassword"
+              placeholder="Password"
+            />
+            <label for="floatingPassword">Password</label>
+          </div>
+          <div
+            class="text-danger text-center"
+            *ngIf="
+              this.fundTransferForm.get('password')?.errors &&
+              this.fundTransferForm.get('password')?.touched
+            "
+          >
+            Invalid Password
+          </div>
+        </form>
+      </div>
+
+      <!-- success response -->
+      <div class="m-2 text-success fs-3 fw-bolder">
+        {{ transferSuccessMsg }}
+      </div>
+      <!-- failed response -->
+      <div class="m-2 text-danger fs-3 fw-bolder">
+        {{ transferErrorMsg }}
+      </div>
+
+      <div class="modal-footer">
+        <button
+          type="button"
+          (click)="clearFundTransfer()"
+          class="btn btn-secondary"
+          data-bs-dismiss="modal"
+        >
+          Close
+        </button>
+        <button (click)="transfer()" type="button" class="btn btn-primary">
+          Transfer
+        </button>
+      </div>
+    </div>
+  </div>
+</div>

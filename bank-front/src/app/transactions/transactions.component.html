@@ -1,0 +1,69 @@
+<a routerLink="../dashboard">Go Back</a>
+<h2 class="text-center mt-3 mb-4">Mini Statement</h2>
+<p class="ps-3 pe-3 text-justify">
+  Lorem ipsum dolor sit amet consectetur adipisicing elit. Quod eveniet hic,
+  quae animi accusantium non earum dolore incidunt delectus velit at vero modi
+  omnis rem, accusamus ab debitis temporibus magni. Lorem ipsum, dolor sit amet
+  consectetur adipisicing elit. Iure, a fugit suscipit maxime odit culpa
+  expedita recusandae ex sunt. Amet qui exercitationem saepe provident officiis
+  suscipit dolores consequatur natus illo. Lorem ipsum dolor sit amet,
+  consectetur adipisicing elit. Accusamus nam minus blanditiis obcaecati nihil
+  reiciendis ratione.
+</p>
+
+<div class="border ps-3 pe-3 pt-3 me-3 ms-3">
+  <div class="title-grid">
+    <div>
+      <h4 class="text-center">
+        All Transactions of A/C: <strong>{{ currentAC }}</strong>
+      </h4>
+    </div>
+    <div class="searchbar">
+      <input
+        type="text"
+        name="search"
+        class="form-control"
+        placeholder="Search"
+        [(ngModel)]="searchKey"
+      />
+    </div>
+    <div>
+      <button
+        (click)="generatePDF()"
+        class="btn btn-success ms-5"
+        type="button"
+      >
+        Export
+      </button>
+    </div>
+  </div>
+
+  <div class="tableDisplay mt-3 me-3 ms-3">
+    <table class="table border">
+      <thead>
+        <tr>
+          <th>No.</th>
+          <th>To Acno</th>
+          <th>From Acno</th>
+          <th>Type</th>
+          <th>Amount</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr
+          *ngFor="
+            let trans of transactions | filter : searchKey : 'type';
+            let i = index
+          "
+        >
+          <td>{{ i + 1 }}</td>
+          <td>{{ trans.toAcno }}</td>
+          <td>{{ trans.fromAcno }}</td>
+          <td>{{ trans.type }}</td>
+          <td>{{ trans.amount }}</td>
+          <!-- Create a function to get balance after each transaction -->
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

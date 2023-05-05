@@ -1,0 +1,73 @@
+@import url("https://fonts.googleapis.com/css2?family=Nunito:wght@300&display=swap");
+
+.main {
+  height: 100dvh;
+  width: 100dvw;
+  /* background-color: rgba(82, 207, 230, 0.849); */
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: auto 60% auto;
+  place-items: center;
+  padding-top: 5em;
+}
+
+.outer {
+  background-color: rgb(19, 128, 230);
+  background-color: #d6f4ff;
+
+  padding-inline: 2em;
+  padding-top: 3em;
+  padding-bottom: 2em;
+  /* Need to update border radius */
+  border-radius: 1px;
+}
+
+.inner {
+  padding-inline: 5em;
+  padding-block: 1em;
+}
+
+.grid h2 {
+  font-family: "Nunito", sans-serif;
+  text-align: center;
+}
+
+form div {
+  margin-block: 1em;
+}
+
+input {
+  vertical-align: middle;
+}
+
+label {
+  text-align: left;
+  width: 100px;
+}
+
+label::after {
+  content: ":";
+}
+
+#loginbtn {
+  margin-top: 2em;
+  display: grid;
+  place-items: center;
+}
+
+/* Form Div */
+form {
+  margin-top: 2em;
+}
+
+.loginfooter {
+  text-align: center;
+  line-height: 3em;
+}
+
+button {
+  border-color: #006e52;
+  background-color: #006e52;
+}

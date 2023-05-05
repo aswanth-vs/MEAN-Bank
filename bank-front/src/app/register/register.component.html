@@ -1,0 +1,114 @@
+<div class="main">
+  <!-- Loading part -->
+  <div
+    *ngIf="registerSuccessMsg"
+    class="text-center d-flex justify-content-center align-items-center"
+    style="height: 50vh; font-size: 1.5em"
+  >
+    <div class="spinner-border text-primary me-4" role="status">
+      <span class="visually-hidden">Loading...</span>
+    </div>
+    Creating Account... Please Wait
+  </div>
+
+  <!-- Form -->
+  <div *ngIf="!registerSuccessMsg">
+    <div><h2>Ashu and Sammy Bankers</h2></div>
+    <div><h3>Account Opening Form</h3></div>
+    <div class="grid">
+      <!-- Left side -->
+      <form [formGroup]="registerForm" action="" (ngSubmit)="register()">
+        <div class="grid1">
+          <div class="grid sub">
+            <label for="">Name</label>
+            <input
+              name="username"
+              formControlName="username"
+              type="text"
+              name=""
+              id=""
+            />
+          </div>
+          <div
+            class="text-danger text-center"
+            *ngIf="
+              this.registerForm.get('username')?.errors &&
+              this.registerForm.get('username')?.touched
+            "
+          >
+            Invalid Username
+          </div>
+          <div class="grid sub">
+            <label for="">Account Number</label>
+            <input
+              name="accno"
+              formControlName="accno"
+              type="text"
+              name=""
+              id=""
+            />
+          </div>
+          <div
+            class="text-danger text-center"
+            *ngIf="
+              this.registerForm.get('accno')?.errors &&
+              this.registerForm.get('accno')?.touched
+            "
+          >
+            Invalid Account Number
+          </div>
+          <div class="grid sub">
+            <label for="">Password</label>
+            <input
+              name="password"
+              formControlName="password"
+              type="password"
+              name=""
+              id=""
+            />
+          </div>
+          <div
+            class="text-danger text-center"
+            *ngIf="
+              this.registerForm.get('password')?.errors &&
+              this.registerForm.get('password')?.touched
+            "
+          >
+            Invalid Password
+          </div>
+          <!-- Register Error Message -->
+          <div class="text-danger fw-bolder">{{ registerErrorMsg }}</div>
+          <!--  -->
+          <div class="grid final">
+            <div>
+              <button type="" class="btn btn-success">Register</button>
+            </div>
+            <div>
+              <a href="">Have an Account? Login instead</a>
+            </div>
+          </div>
+          <!--  -->
+        </div>
+      </form>
+      <!-- Right side -->
+      <div class="grid2">
+        <!-- <div class="grid sub">
+        <label for="">Name</label>
+        <input type="text" name="" id="" />
+      </div>
+      <div class="grid sub">
+        <label for="">Account Number</label>
+        <input type="text" name="" id="" />
+      </div>
+      <div class="grid sub">
+        <label for="">Password</label>
+        <input type="text" name="" id="" />
+      </div> -->
+        <img src="https://img.memegenerator.net/images/73331054.jpg" alt="" />
+      </div>
+    </div>
+    <div>
+      <!-- Insert Div containing button here, if needed -->
+    </div>
+  </div>
+</div>

@@ -1,0 +1,79 @@
+<div class="main">
+  <div class="grid">
+    <div></div>
+    <div class="outer">
+      <div class="inner">
+        <div>
+          <!--  Heading -->
+          <h2>
+            A & S <br />
+            Bankers
+          </h2>
+        </div>
+        <div>
+          <form action="" class="" [formGroup]="loginForm" (ngSubmit)="login()">
+            <div>
+              <label for="accountNumber">A/C Number</label>
+              <input
+                id="accountNumber"
+                type="text"
+                placeholder=""
+                pattern="[0-9]*"
+                formControlName="accno"
+              />
+            </div>
+            <div
+              class="text-danger text-center"
+              *ngIf="
+                this.loginForm.get('accno')?.errors &&
+                this.loginForm.get('accno')?.touched
+              "
+            >
+              Invalid Account Number
+            </div>
+            <div>
+              <label for="password">Password</label>
+              <input
+                id="password"
+                type="password"
+                placeholder=""
+                formControlName="password"
+              />
+            </div>
+            <div
+              class="text-danger text-center"
+              *ngIf="
+                this.loginForm.get('password')?.errors &&
+                this.loginForm.get('password')?.touched
+              "
+            >
+              Invalid Username
+            </div>
+            <!-- login error message -->
+            <div class="text-danger fw-bolder">{{ loginErrorMsg }}</div>
+            <!-- login error message end -->
+            <div id="loginbtn">
+              <button class="btn btn-success" type="">
+                Login
+                <!-- Spinner -->
+                <div
+                  *ngIf="loginSuccessStatus"
+                  class="spinner-border text-light"
+                  role="status"
+                >
+                  <span class="visually-hidden">Loading...</span>
+                </div>
+                <!-- Spinner end -->
+              </button>
+            </div>
+          </form>
+        </div>
+      </div>
+      <div class="loginfooter"><a href="">Forgot Password?</a></div>
+      <div class="loginfooter">
+        <a routerLink="register">New User? Sign Up</a>
+      </div>
+    </div>
+    <div></div>
+  </div>
+</div>
